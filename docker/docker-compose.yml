@@ -1,0 +1,19 @@
+services:
+  groceries_schedule:
+    build:
+      context: .
+    container_name: groceries_schedule
+    volumes:
+      - './../:/var/www'
+      - './.ssh/:/root/.ssh'
+      - '/var/www/docker'
+    ports:
+      - '1537:80'
+    working_dir: /var/www
+  groceries_schedule_db:
+    image: 'mysql:latest'
+    container_name: groceries_schedule_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=myverystrongpassword
+    ports:
+      - '3397:3306'
