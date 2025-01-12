@@ -76,8 +76,9 @@ class GroceryItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(GroceryItem $grocery_item)
     {
-        //
+        $grocery_item->delete();
+        return redirect(route('grocery_itens.index'));
     }
 }
