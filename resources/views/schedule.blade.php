@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Schedule')
+
 @section('content')
-<p>This is the index content</p>
+<p>Schedule</p>
 @endsection

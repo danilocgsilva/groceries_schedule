@@ -1,8 +1,10 @@
 FROM debian:bookworm-slim
 
+EXPOSE 8000
+EXPOSE 5173
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install curl git zip vim -y
+RUN apt-get install curl git zip vim mariadb-client -y
 RUN apt-get install php php-mysql php-xdebug php-curl php-zip php-xml php-mbstring -y
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
