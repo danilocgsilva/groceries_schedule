@@ -34,7 +34,7 @@ class GroceryItemController extends Controller
             'name' => 'required|string'
         ]);
         GroceryItem::create(['name' => $request->name]);
-        return redirect(route('grocery_itens.index'));
+        return redirect(route('grocery_items.index'));
     }
 
     /**
@@ -79,6 +79,6 @@ class GroceryItemController extends Controller
     public function destroy(GroceryItem $grocery_item)
     {
         $grocery_item->delete();
-        return redirect(route('grocery_itens.index'));
+        return redirect(route('grocery_items.index'));
     }
 }

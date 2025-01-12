@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route("grocery_itens.store") }}" method="POST">
+<form action="{{ route("grocery_items.store") }}" method="POST">
     <label for="name" class="
     block
     font-medium
