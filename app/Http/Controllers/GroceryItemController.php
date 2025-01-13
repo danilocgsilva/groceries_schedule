@@ -31,10 +31,12 @@ class GroceryItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string'
+            "name" => "required|string"
         ]);
-        GroceryItem::create(['name' => $request->name]);
-        return redirect(route('grocery_items.index'));
+        GroceryItem::create(["name" => $request->name]);
+
+        return redirect(route("grocery_items.index"))
+            ->with("just_happened_event_info", "The grocery item {$request->name} has just been crearted.");
     }
 
     /**
