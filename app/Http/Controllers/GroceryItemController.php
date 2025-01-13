@@ -52,17 +52,25 @@ class GroceryItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(GroceryItem $grocery_item)
     {
-        //
+        return view('GroceryItem.edit', [
+            'groceryItem' => $grocery_item
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, GroceryItem $grocery_item)
     {
-        //
+        $grocery_item->update([
+            'name' => $request->name
+        ]);
+        
+        return redirect(route("grocery_items.show", [
+            'grocery_item' => $grocery_item->id
+        ]));
     }
 
     public function delete(GroceryItem $grocery_item)

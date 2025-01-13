@@ -3,9 +3,10 @@
 @section('title', 'Schedule')
 
 @section('content')
-<div class="page_summary">
-    <p>This is the grocery item index</p>
-</div>
+
+@include('layouts.page_summary', [
+    "textContent" => "This is the page summary"
+])
 
 @if (session("just_happened_event_info"))
 <div class="info">

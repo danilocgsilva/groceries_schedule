@@ -7,8 +7,7 @@
 <p>This is the show template</p>
 <p>Item: {{ $groceryItem->name }}</p>
 
-<form method="GET" action="{{ route('grocery_items.delete', ['grocery_item' => $groceryItem->id ]) }}">
-    <input type="submit" value="Delete" class="
+<a href="{{ route('grocery_items.delete', ['grocery_item' => $groceryItem->id ]) }}" class="
     border 
     hover:bg-blue-800 
     focus:ring-blue-300 
@@ -19,7 +18,25 @@
     px-6 
     text-center 
     dark:hover:bg-blue-700 
-    dark:focus:ring-blue-800" />
-</form>
+    dark:focus:ring-blue-800
+">
+    Delete
+</a>
+<a href="{{ route('grocery_items.edit', ['grocery_item' => $groceryItem->id ]) }}" class="
+    border 
+    hover:bg-blue-800 
+    focus:ring-blue-300 
+    font-medium 
+    rounded-lg 
+    sm:w-auto 
+    py-2 
+    px-6 
+    text-center 
+    dark:hover:bg-blue-700 
+    dark:focus:ring-blue-800
+">
+    Edit
+</a>
+
 
 @endsection
