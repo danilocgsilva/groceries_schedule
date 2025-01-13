@@ -15,6 +15,11 @@ h1 {
     text-align: center;
 }
 
+.page_summary {
+    margin: 10px;
+    font-style: italic;
+}
+
 @media screen and (min-width: 480px) {
     #container {
         margin: 10px;

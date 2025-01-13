@@ -3,7 +3,9 @@
 @section('title', 'Schedule')
 
 @section('content')
-<p>This is the grocery item index</p>
+<div class="page_summary">
+    <p>This is the grocery item index</p>
+</div>
 <ul>
     @foreach ($groceriesItems as $groceryItem)
         <li>
