@@ -8,13 +8,20 @@ use Database\Repositories\GroceryItemRepository;
 
 class GroceryItemController extends Controller
 {
+    private GroceryItemRepository $groceryItemRepository;
+    
+    public function __construct()
+    {
+        $this->groceryItemRepository = new GroceryItemRepository();
+    }
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         return view('GroceryItem.index', [
-            'groceriesItems' => GroceryItem::all()
+            'groceriesItems' => $this->groceryItemRepository->all()
         ]);
     }
 
@@ -35,14 +42,11 @@ class GroceryItemController extends Controller
             "name" => "required|string"
         ]);
 
-        // GroceryItem::create(["name" => $request->name]);
+        $groceryItem = (new GroceryItem())
+            ->setName($request->name)
+            ->setEstimation((int) $request->lasting_estimate);
 
-        $groceryItem = GroceryItem::make([
-            "name" => $request->name,
-            "estimation" => $request->lasting_estimate
-        ]);
-        $groceryItem->save();
-        $groceryItem->estimation()->create(['days' => $request->lasting_estimate]);
+        $this->groceryItemRepository->save($groceryItem);
 
         return redirect(route("grocery_items.index"))
             ->with("just_happened_event_info", "The grocery item {$request->name} has just been crearted.");
@@ -97,7 +101,8 @@ class GroceryItemController extends Controller
      */
     public function destroy(GroceryItem $grocery_item)
     {
-        $grocery_item->delete();
+        $this->groceryItemRepository->remove($grocery_item);
+        
         return redirect(route('grocery_items.index'));
     }
 }

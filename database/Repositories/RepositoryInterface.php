@@ -9,7 +9,22 @@ use App\Models\ModelInterface;
 
 interface RepositoryInterface
 {
-    public function save(ModelInterface $entry);
+    /**
+     * @param ModelInterface $entry
+     * @return void
+     */
+    public function save($entry);
 
     public function find(int $id): Model;
+
+    /**
+     * @return array
+     */
+    public function all(): array;
+
+    /**
+     * @param Model $entry
+     * @return int
+     */
+    public function remove($entry): bool;
 }

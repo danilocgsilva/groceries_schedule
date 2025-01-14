@@ -6,6 +6,7 @@
 
 <p>This is the show template</p>
 <p>Item: {{ $groceryItem->name }}</p>
+<p>Estimation: {{ $groceryItem->getEstimation() }}</p>
 
 <a href="{{ route('grocery_items.delete', ['grocery_item' => $groceryItem->id ]) }}" class="
     border 
