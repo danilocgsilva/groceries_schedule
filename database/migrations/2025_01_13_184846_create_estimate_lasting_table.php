@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('estimate_lasting', function (Blueprint $table) {
             $table->id();
-            $table->int('days');
+            $table->integer('days');
+            $table->integer('grocery_item_id');
             $table->timestamps();
+            $table->foreign('grocery_item_id')->references('id')->on('groceries_items');
         });
     }
 

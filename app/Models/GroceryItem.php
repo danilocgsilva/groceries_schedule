@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroceryItem extends Model
 {
-    protected $table = 'groceries_itens';
+    protected $table = 'groceries_items';
 
     protected $fillable = [
         'name'
