@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GroceryItem;
+use Database\Repositories\GroceryItemRepository;
 
 class GroceryItemController extends Controller
 {
@@ -33,7 +34,15 @@ class GroceryItemController extends Controller
         $request->validate([
             "name" => "required|string"
         ]);
-        GroceryItem::create(["name" => $request->name]);
+
+        // GroceryItem::create(["name" => $request->name]);
+
+        $groceryItem = GroceryItem::make([
+            "name" => $request->name,
+            "estimation" => $request->lasting_estimate
+        ]);
+        $groceryItem->save();
+        $groceryItem->estimation()->create(['days' => $request->lasting_estimate]);
 
         return redirect(route("grocery_items.index"))
             ->with("just_happened_event_info", "The grocery item {$request->name} has just been crearted.");

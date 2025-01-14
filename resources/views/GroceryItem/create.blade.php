@@ -6,14 +6,14 @@
 
 <form action="{{ route("grocery_items.store") }}" method="POST">
     <label for="name" class="
-    block
-    font-medium
-    px-2
-    ">
+        block
+        font-medium
+        px-2
+        ">
         Name
     </label>
     @csrf
-    <input id="name" name="name" type="text"
+    <input id="name" name="name" type="text" placeholder="Item name"
         class="
         border 
         rounded-lg
@@ -24,6 +24,28 @@
         block
         "
     >
+
+    <label for="lasting_estimate" class="
+        block
+        font-medium
+        px-2
+        ">
+        Estimate
+    </label>
+    @csrf
+    <input id="lasting_estimate" name="lasting_estimate" type="text" placeholder="Estimates lasting"
+        class="
+        border 
+        rounded-lg
+        py-2 
+        px-3 
+        text-gray-700 
+        focus:outline-none
+        block
+        "
+    >
+
+
     <input type="submit" value="Create"
     class="
         border 

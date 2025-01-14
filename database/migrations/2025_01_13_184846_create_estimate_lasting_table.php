@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('estimate_lasting', function (Blueprint $table) {
             $table->id();
             $table->integer('days');
-            $table->integer('grocery_item_id');
+            $table->biginteger('grocery_item_id')->unsigned();
             $table->timestamps();
             $table->foreign('grocery_item_id')->references('id')->on('groceries_items');
         });
