@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroceryItem extends Model implements ModelInterface
 {
-    protected $table = 'groceries_items';
+    protected $table = "groceries_items";
 
-    private int $estimation;
+    private int|null $estimation = null;
 
     protected $fillable = [
-        'name'
+        "name"
     ];
 
     public function estimation()
@@ -29,9 +29,13 @@ class GroceryItem extends Model implements ModelInterface
 
     public function getEstimation(): int|null
     {
-        return $this->estimation ?? 
-            (int) $this->estimation()->get()->first()->days ??
-            null;
+        if ($this->estimation) {
+            return $this->estimation;
+        }
+        if ($estimation = $this->estimation()->get()->first()) {
+            return ($this->estimation = (int) $estimation->days);
+        }
+        return null;
     }
 
     public function setName(string $name): self
