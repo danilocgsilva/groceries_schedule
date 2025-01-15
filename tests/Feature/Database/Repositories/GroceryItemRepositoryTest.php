@@ -98,6 +98,16 @@ class GroceryItemRepositoryTest extends TestCase
 
         $groceryItem->setEstimation(12);
         $this->groceryItemRepository->update($groceryItem);
+
+        /*
+        The estimate_lasting table will now have two entries. Each time a user changes the
+        lasting data from the item grocery a new entry is created. Actually, a new entry is
+        created when the item grocery is first created with a lasting data (that is optional,
+        by the day). If happens a change to the lasting data to this same grocery item, then
+        it is created a new entry for the lasting data, so the old data stay on dataabse. This
+        is important to keep track of the changes of lasting. With such data, it is possible
+        to make calculations about the evolution of the needs.
+        */
         $this->assertCount(2, DB::table("estimate_lasting")->get());
     }
 

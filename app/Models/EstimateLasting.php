@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * The estimation for how long an item grocery will lasts after its purchase.
+ */
 class EstimateLasting extends Model
 {
     protected $table = 'estimate_lasting';
