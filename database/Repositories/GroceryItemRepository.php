@@ -60,4 +60,19 @@ class GroceryItemRepository implements RepositoryInterface
         $groceryItem->delete();
         return true;
     }
+
+    /**
+     * @param GroceryItem $groceryItem
+     * @return void
+     */
+    public function update($groceryItem): void
+    {
+        if (($estimation = $groceryItem->getEstimation())) {
+            $groceryItem->estimation()->create([
+                "days" => $estimation
+            ]);
+        }
+        
+        $groceryItem->save();
+    }
 }

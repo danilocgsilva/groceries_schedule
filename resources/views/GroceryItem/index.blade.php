@@ -5,7 +5,7 @@
 @section('content')
 
 @include('layouts.page_summary', [
-    "textContent" => "This is the page summary"
+    "textContent" => "This groceries listing"
 ])
 
 @if (session("just_happened_event_info"))

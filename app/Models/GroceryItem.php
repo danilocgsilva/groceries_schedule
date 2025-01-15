@@ -12,6 +12,8 @@ class GroceryItem extends Model implements ModelInterface
 
     private int|null $estimation = null;
 
+    private EstimateLasting $estimateLasting;
+
     protected $fillable = [
         "name"
     ];
@@ -32,10 +34,17 @@ class GroceryItem extends Model implements ModelInterface
         if ($this->estimation) {
             return $this->estimation;
         }
-        if ($estimation = $this->estimation()->get()->first()) {
+        if ($estimation = $this->estimation()->get()->last()) {
+            $this->estimateLasting = $estimation;
             return ($this->estimation = (int) $estimation->days);
         }
         return null;
+    }
+
+    public function getObjectEstimation(): EstimateLasting
+    {
+        return $this->estimateLasting ?? 
+            ($this->estimateLasting = $this->estimation()->get()->last());
     }
 
     public function setName(string $name): self

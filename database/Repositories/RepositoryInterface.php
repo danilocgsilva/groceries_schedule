@@ -27,4 +27,10 @@ interface RepositoryInterface
      * @return int
      */
     public function remove($entry): bool;
+
+    /**
+     * @param Model $entry
+     * @return int
+     */
+    public function update($entry): void;
 }

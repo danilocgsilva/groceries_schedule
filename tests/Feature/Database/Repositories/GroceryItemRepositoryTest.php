@@ -52,4 +52,66 @@ class GroceryItemRepositoryTest extends TestCase
         $this->assertCount(1, DB::table("groceries_items")->get());
         $this->assertCount(1, DB::table("estimate_lasting")->get());
     }
+
+    public function testKeepKeyAfterSave(): void
+    {
+        $groceryItem = (new GroceryItem())
+            ->setName("Milk")
+            ->setEstimation(4);
+        $this->groceryItemRepository->save($groceryItem);
+        $this->assertSame(1, $groceryItem->id);
+    }
+
+    public function testFind(): void
+    {
+        $groceryItem = (new GroceryItem())
+            ->setName("Milk")
+            ->setEstimation(4);
+        $this->groceryItemRepository->save($groceryItem);
+        $groceryId = $groceryItem->id;
+        
+        $recoveredModel = $this->groceryItemRepository->find($groceryId);
+
+        $this->assertSame($groceryId, $recoveredModel->id);
+    }
+
+    public function testUpdateInDatabase(): void
+    {
+        $groceryItem = (new GroceryItem())
+            ->setName("Chocolate")
+            ->setEstimation(8);
+        $this->groceryItemRepository->save($groceryItem);
+
+        $groceryItem->setName("Orange");
+        $this->groceryItemRepository->update($groceryItem);
+
+        $modelFromDatabase = $this->groceryItemRepository->find($groceryItem->id);
+        $this->assertSame("Orange", $modelFromDatabase->getName());
+    }
+
+    public function testUpdateEstimates(): void
+    {
+        $groceryItem = (new GroceryItem())
+            ->setName("Coca Cola")
+            ->setEstimation(8);
+        $this->groceryItemRepository->save($groceryItem);
+
+        $groceryItem->setEstimation(12);
+        $this->groceryItemRepository->update($groceryItem);
+        $this->assertCount(2, DB::table("estimate_lasting")->get());
+    }
+
+    public function testUpdateAndGetUpdatedEstimation(): void
+    {
+        $groceryItem = (new GroceryItem())
+            ->setName("Coca Cola")
+            ->setEstimation(8);
+        $this->groceryItemRepository->save($groceryItem);
+
+        $groceryItem->setEstimation(12);
+        $this->groceryItemRepository->update($groceryItem);
+
+        $recoveredFromDatabaseModel = $this->groceryItemRepository->find($groceryItem->id);
+        $this->assertSame(12, $recoveredFromDatabaseModel->getEstimation());
+    }
 }
