@@ -9,7 +9,14 @@
 ])
 
 <form action="{{ route('grocery_items.update', ['grocery_item' => $groceryItem->id ]) }}" method="POST">
-    <input type="text" name="name" class="
+    <label for="name" class="
+        block
+        font-medium
+        px-2
+        ">
+        Name
+    </label>
+    <input type="text" name="name" id="name" class="
         border 
         rounded-lg
         py-2 
@@ -18,7 +25,15 @@
         focus:outline-none
         block
     " value="{{ $groceryItem->name }}" />
-    <input type="text" name="estimate_lasting" class="
+
+    <label for="lasting_estimate" class="
+        block
+        font-medium
+        px-2
+        ">
+        Estimate
+    </label>
+    <input type="text" name="lasting_estimate" id="lasting_estimate" class="
         border 
         rounded-lg
         py-2 
@@ -27,6 +42,17 @@
         focus:outline-none
         block
     " placeholder="Estimate lasting" />
+
+    <a href="#" class="
+        border 
+        rounded-lg
+        py-2 
+        px-3 
+        text-gray-700 
+        focus:outline-none
+    ">Set first date now!</a>
+    <br />
+
     @method("PUT")
     @csrf
     <input type="submit" value="update" class="
