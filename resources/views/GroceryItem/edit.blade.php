@@ -16,7 +16,14 @@
 
     <div class="mb-5">
         <label for="lasting_estimate" class="block font-medium px-2">Estimate</label>
-        <input type="text" name="lasting_estimate" id="lasting_estimate" class="@form_input_classes" placeholder="Estimate lasting" />
+        <input 
+            type="text" 
+            name="lasting_estimate" 
+            id="lasting_estimate" 
+            class="@form_input_classes" 
+            placeholder="Estimate lasting"
+            value={{ $groceryItem->getEstimation() }}
+            />
     </div>
 
     <div class="mb-5">
