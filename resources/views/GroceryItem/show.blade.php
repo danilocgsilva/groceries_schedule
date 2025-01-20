@@ -4,11 +4,13 @@
 
 @section('content')
 
-<p>This is the show template</p>
-<p>Item: {{ $groceryItem->name }}</p>
-<p>Estimation: {{ $groceryItem->getEstimation() }}</p>
+<div class="max-w-2xl mx-auto">
 
-<a href="{{ route('grocery_items.delete', ['grocery_item' => $groceryItem->id ]) }}" class="
+    <p>This is the show template</p>
+    <p>Item: {{ $groceryItem->name }}</p>
+    <p>Estimation: {{ $groceryItem->getEstimation() }}</p>
+
+    <a href="{{ route('grocery_items.delete', ['grocery_item' => $groceryItem->id]) }}" class="
     border 
     hover:bg-blue-800 
     focus:ring-blue-300 
@@ -21,9 +23,9 @@
     dark:hover:bg-blue-700 
     dark:focus:ring-blue-800
 ">
-    Delete
-</a>
-<a href="{{ route('grocery_items.edit', ['grocery_item' => $groceryItem->id ]) }}" class="
+        Delete
+    </a>
+    <a href="{{ route('grocery_items.edit', ['grocery_item' => $groceryItem->id]) }}" class="
     border 
     hover:bg-blue-800 
     focus:ring-blue-300 
@@ -36,8 +38,11 @@
     dark:hover:bg-blue-700 
     dark:focus:ring-blue-800
 ">
-    Edit
-</a>
+        Edit
+    </a>
+
+
+</div>
 
 
 @endsection
