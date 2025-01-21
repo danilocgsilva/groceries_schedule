@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('estimate_lasting', function (Blueprint $table) {
+        Schema::create("estimate_lasting", function (Blueprint $table) {
             $table->id();
-            $table->integer('days');
-            $table->biginteger('grocery_item_id')->unsigned();
+            $table->integer("days");
+            $table->biginteger("grocery_item_id")->unsigned();
             $table->timestamps();
-            $table->foreign('grocery_item_id')->references('id')->on('groceries_items');
+            $table->foreign("grocery_item_id")->references("id")->on("groceries_items");
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estimate_lasting');
+        Schema::dropIfExists("estimate_lasting");
     }
 };

@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('first_count_date', function (Blueprint $table) {
+        Schema::create("first_count_date", function (Blueprint $table) {
             $table->id();
-            $table->biginteger('grocery_item_id')->unsigned();
-            $table->dateTime('first_date');
+            $table->biginteger("grocery_item_id")->unsigned();
+            $table->dateTime("first_date");
             $table->timestamps();
+            $table->foreign("grocery_item_id")->references("id")->on("groceries_items");
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('first_count_date');
+        Schema::dropIfExists("first_count_date");
     }
 };

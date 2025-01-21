@@ -6,8 +6,8 @@ namespace Database\Repositories;
 
 use App\Models\GroceryItem;
 use App\Models\EstimateLasting;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\ModelInterface;
+use Illuminate\Database\Eloquent\Model;
 
 class GroceryItemRepository implements RepositoryInterface
 {
@@ -15,7 +15,7 @@ class GroceryItemRepository implements RepositoryInterface
      * @param \App\Models\GroceryItem $groceryItem
      * @return \Database\Repositories\GroceryItemRepository
      */
-    public function save($groceryItem): static
+    public function save(Model $groceryItem): static
     {
         $groceryItem->save();
         if (($estimation = $groceryItem->getEstimation())) {
@@ -51,7 +51,7 @@ class GroceryItemRepository implements RepositoryInterface
      * @param GroceryItem $groceryItem
      * @return int
      */
-    public function remove($groceryItem): bool
+    public function remove(Model $groceryItem): bool
     {
         if (($estimationCollection = $groceryItem->estimation()->get())->count()) {
             $estimationIds = $estimationCollection->pluck('id')->toArray();
@@ -65,7 +65,7 @@ class GroceryItemRepository implements RepositoryInterface
      * @param GroceryItem $groceryItem
      * @return void
      */
-    public function update($groceryItem): void
+    public function update(Model $groceryItem): void
     {
         if (($estimation = $groceryItem->getEstimation())) {
             $groceryItem->estimation()->create([

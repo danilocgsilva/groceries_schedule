@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\GroceryItem;
 use Database\Repositories\GroceryItemRepository;
+use App\Http\Requests\GroceryItemRequest;
 
 class GroceryItemController extends Controller
 {
@@ -36,12 +37,8 @@ class GroceryItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(GroceryItemRequest $request)
     {
-        $request->validate([
-            "name" => "required|string"
-        ]);
-
         $groceryItem = (new GroceryItem())
             ->setName($request->name)
             ->setEstimation((int) $request->lasting_estimate);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature\Database\Repositories;
 
 use App\Models\GroceryItem;
@@ -9,7 +11,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\RefreshDatabaseState;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-// use Tests\Feature\Database\TestCase;
 use DB;
 
 class GroceryItemRepositoryTest extends TestCase

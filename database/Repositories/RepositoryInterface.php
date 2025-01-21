@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Repositories;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\ModelInterface;
+use Illuminate\Database\Eloquent\Model;
 
 interface RepositoryInterface
 {
@@ -13,7 +13,7 @@ interface RepositoryInterface
      * @param ModelInterface $entry
      * @return void
      */
-    public function save($entry);
+    public function save(Model $entry);
 
     public function find(int $id): Model;
 
@@ -26,11 +26,11 @@ interface RepositoryInterface
      * @param Model $entry
      * @return int
      */
-    public function remove($entry): bool;
+    public function remove(Model $entry): bool;
 
     /**
      * @param Model $entry
      * @return int
      */
-    public function update($entry): void;
+    public function update(Model $entry): void;
 }

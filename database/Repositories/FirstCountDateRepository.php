@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace Database\Repositories;
 
 use App\Models\FirstCountDate;
+use Illuminate\Database\Eloquent\Model;
 
 class FirstCountDateRepository implements RepositoryInterface
 {
     /**
-     * @param \App\Models\FirstCountDate $groceryItem
-     * @return \Database\Repositories\FirstItemDateRepository
+     * @param \App\Models\FirstCountDate $firstCountDate
+     * @return \Database\Repositories\FirstCountDateRepository
      */
-    public function save($firstCountDate): static
+    public function save(Model $firstCountDate): static
     {
         $firstCountDate->save();
         return $this;
