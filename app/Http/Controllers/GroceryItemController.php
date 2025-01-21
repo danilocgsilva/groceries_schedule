@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,6 +9,7 @@ use App\Models\GroceryItem;
 use Database\Repositories\GroceryItemRepository;
 use App\Http\Requests\GroceryItemRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Http\Requests\GroceryItemUpdateRequest;
 
 class GroceryItemController extends Controller
 {
@@ -71,14 +74,25 @@ class GroceryItemController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Summary of update
+     * 
+     * @param \App\Http\Requests\GroceryItemUpdateRequest $request
+     * @param \App\Models\GroceryItem $grocery_item
+     * @param \Database\Repositories\GroceryItemRepository $groceryItemRepository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function update(Request $request, GroceryItem $grocery_item)
+    public function update(
+        GroceryItemUpdateRequest $request, 
+        GroceryItem $grocery_item, 
+        GroceryItemRepository $groceryItemRepository
+    ): RedirectResponse
     {
-        $grocery_item->update([
-            'name' => $request->name
-        ]);
-        
+        if ($request->lasting_estimate) {
+            $grocery_item->setEstimation((int) $request->lasting_estimate);
+        }
+
+        $groceryItemRepository->update($grocery_item);
+
         return redirect(route("grocery_items.show", [
             'grocery_item' => $grocery_item->id
         ]));

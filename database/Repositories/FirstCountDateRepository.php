@@ -55,6 +55,6 @@ class FirstCountDateRepository implements RepositoryInterface
      */
     public function update($firstCountDate): void
     {
-        $this->save($firstCountDate);
+        $firstCountDate->update();
     }
 }

@@ -13,10 +13,19 @@ class FirstDateService
 {
     public static function setFirstDate(GroceryItem $groceryItem)
     {
+        $firstCountDateRepository = new FirstCountDateRepository();
+
         $firstCountDate = FirstCountDate::make([
             'grocery_item_id' => $groceryItem->id,
             'first_date' => new DateTime()
         ]);
-        (new FirstCountDateRepository())->save($firstCountDate);
+
+        if ($groceryItem->firstCountDate) {
+            $firstCountDateRepository->update(firstCountDate: $firstCountDate);
+        } else {
+            $firstCountDateRepository->save(firstCountDate: $firstCountDate);
+        }
+
+        $groceryItem->refresh();
     }
 }

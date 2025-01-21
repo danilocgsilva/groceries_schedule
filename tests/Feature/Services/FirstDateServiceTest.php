@@ -44,14 +44,12 @@ class FirstDateServiceTest extends TestCase
     #[Test]
     public function getGroceryFromFirstDate(): void
     {
-        /**
-         * @var \App\Models\GroceryItem
-         */
+        /** @var \App\Models\GroceryItem */
         $groceryItem = $this->createGroceryInDatabase("Coffee");
+
         FirstDateService::setFirstDate($groceryItem);
-        /**
-         * @var \App\Models\FirstCountDate
-         */
+        
+        /** @var \App\Models\FirstCountDate */
         $recoveredFirstDateFromGrocery = (new FirstCountDateRepository())->find($groceryItem->id);
         $groceryFetched = $recoveredFirstDateFromGrocery->groceryItem;
         $this->assertInstanceOf(GroceryItem::class, $groceryFetched);
@@ -60,12 +58,21 @@ class FirstDateServiceTest extends TestCase
     #[Test]
     public function getFirstDateFromGrocery(): void
     {
-        /**
-         * @var \App\Models\GroceryItem
-         */
+        /** @var \App\Models\GroceryItem */
         $groceryItem = $this->createGroceryInDatabase("Sugar");
         FirstDateService::setFirstDate($groceryItem);
         $this->assertInstanceOf(FirstCountDate::class, $groceryItem->firstCountDate);
+    }
+
+    #[Test]
+    public function setFirstDateMustUpdatedInsteadOfAddNew(): void
+    {
+        /** @var \App\Models\GroceryItem */
+        $groceryItem = $this->createGroceryInDatabase("Milk 1L");
+        FirstDateService::setFirstDate($groceryItem);
+        $this->assertCount(1, DB::table("first_count_date")->get());
+        FirstDateService::setFirstDate($groceryItem);
+        $this->assertCount(1, DB::table("first_count_date")->get());
     }
 
     private function createGroceryInDatabase(string $groceryItemName): GroceryItem
