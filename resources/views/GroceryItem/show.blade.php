@@ -7,40 +7,23 @@
 <div class="max-w-2xl mx-auto">
 
     <p>This is the show template</p>
-    <p>Item: {{ $groceryItem->name }}</p>
-    <p>Estimation: {{ $groceryItem->getEstimation() }}</p>
+    <ul class="mt-4 space-y-2">
+        <li class="ml-2">Item: {{ $groceryItem->name }}</li>
+        <li class="ml-2">Estimation: {{ $groceryItem->getEstimation() }}</li>
+    </ul>
 
-    <a href="{{ route('grocery_items.delete', ['grocery_item' => $groceryItem->id]) }}" class="
-    border 
-    hover:bg-blue-800 
-    focus:ring-blue-300 
-    font-medium 
-    rounded-lg 
-    sm:w-auto 
-    py-2 
-    px-6 
-    text-center 
-    dark:hover:bg-blue-700 
-    dark:focus:ring-blue-800
-">
-        Delete
-    </a>
-    <a href="{{ route('grocery_items.edit', ['grocery_item' => $groceryItem->id]) }}" class="
-    border 
-    hover:bg-blue-800 
-    focus:ring-blue-300 
-    font-medium 
-    rounded-lg 
-    sm:w-auto 
-    py-2 
-    px-6 
-    text-center 
-    dark:hover:bg-blue-700 
-    dark:focus:ring-blue-800
-">
-        Edit
-    </a>
-
+    <div class="mt-5">
+        <a 
+        href="{{ route('grocery_items.delete', ['grocery_item' => $groceryItem->id]) }}" 
+        class="@form_action_classes m-2">
+            Delete
+        </a>
+        <a 
+        href="{{ route('grocery_items.edit', ['grocery_item' => $groceryItem->id]) }}"
+        class="@form_action_classes">
+            Edit
+        </a>
+    </div>
 
 </div>
 
