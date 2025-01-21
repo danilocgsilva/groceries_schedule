@@ -9,7 +9,7 @@ use App\Models\GroceryItem;
 use DateTime;
 use Database\Repositories\FirstCountDateRepository;
 
-class FirstDataService
+class FirstDateService
 {
     public static function setFirstDate(GroceryItem $groceryItem)
     {

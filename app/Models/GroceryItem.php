@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class GroceryItem extends Model implements ModelInterface
 {
@@ -56,5 +57,10 @@ class GroceryItem extends Model implements ModelInterface
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function firstCountDate(): HasOne
+    {
+        return $this->hasOne(FirstCountDate::class, "grocery_item_id", "id");
     }
 }

@@ -7,9 +7,6 @@ namespace Tests\Feature\Database\Repositories;
 use App\Models\GroceryItem;
 use Database\Repositories\GroceryItemRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\RefreshDatabaseState;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use DB;
 
