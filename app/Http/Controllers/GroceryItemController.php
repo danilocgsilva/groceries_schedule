@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\GroceryItem;
 use Database\Repositories\GroceryItemRepository;
 use App\Http\Requests\GroceryItemRequest;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class GroceryItemController extends Controller
 {
@@ -37,7 +38,7 @@ class GroceryItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(GroceryItemRequest $request)
+    public function store(GroceryItemRequest $request): RedirectResponse
     {
         $groceryItem = (new GroceryItem())
             ->setName($request->name)

@@ -10,6 +10,9 @@
     <ul class="mt-4 space-y-2">
         <li class="ml-2">Item: {{ $groceryItem->name }}</li>
         <li class="ml-2">Estimation: {{ $groceryItem->getEstimation() }}</li>
+        @if ($groceryItem->firstCountDate)
+            <li class="ml-2">First date setted: {{ $groceryItem->firstCountDate->first_date }}</li>
+        @endif
     </ul>
 
     <div class="mt-5">
