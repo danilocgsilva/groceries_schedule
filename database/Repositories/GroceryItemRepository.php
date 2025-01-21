@@ -12,10 +12,10 @@ use App\Models\ModelInterface;
 class GroceryItemRepository implements RepositoryInterface
 {
     /**
-     * @param GroceryItem $groceryItem
+     * @param \App\Models\GroceryItem $groceryItem
      * @return \Database\Repositories\GroceryItemRepository
      */
-    public function save($groceryItem): self
+    public function save($groceryItem): static
     {
         $groceryItem->save();
         if (($estimation = $groceryItem->getEstimation())) {
@@ -33,7 +33,7 @@ class GroceryItemRepository implements RepositoryInterface
     }
 
     /**
-     * @return array<GroceryItem>
+     * @return array<\App\Models\GroceryItem>
      */
     public function all(): array
     {

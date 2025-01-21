@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('first_count_date', function (Blueprint $table) {
             $table->id();
+            $table->biginteger('grocery_item_id')->unsigned();
             $table->dateTime('first_date');
             $table->timestamps();
         });
