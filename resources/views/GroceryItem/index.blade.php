@@ -4,6 +4,8 @@
 
 @section('content')
 
+<div class="container max-w-2xl mx-auto">
+
 @include('layouts.page_summary', [
     "textContent" => "This groceries listing"
 ])
@@ -56,5 +58,7 @@
         <p>Still there's no entries registered!</p>
     <div>
 @endif
+
+</div>
 
 @endsection

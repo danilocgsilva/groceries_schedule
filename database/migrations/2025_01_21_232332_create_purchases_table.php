@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->biginteger("grocery_item_id")->unsigned();
+            $table->integer("place_id")->unsigned();
             $table->integer("amount")->unsigned();
             $table->timestamps();
         });

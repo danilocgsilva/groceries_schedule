@@ -10,6 +10,7 @@ class Purchase extends Model
 
     protected $fillable = [
         "grocery_item_id",
-        "amount"
+        "amount",
+        "place_id"
     ];
 }

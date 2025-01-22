@@ -4,36 +4,30 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\GroceryItem;
 use Database\Repositories\GroceryItemRepository;
 use App\Http\Requests\GroceryItemRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Http\Requests\GroceryItemUpdateRequest;
+use Illuminate\Contracts\View\View;
 
 class GroceryItemController extends Controller
 {
-    private GroceryItemRepository $groceryItemRepository;
-    
-    public function __construct()
-    {
-        $this->groceryItemRepository = new GroceryItemRepository();
-    }
     
     /**
-     * Display a listing of the resource.
+     * Display a listing of the groceries.
      */
-    public function index()
+    public function index(GroceryItemRepository $groceryItemRepository): View
     {
         return view('GroceryItem.index', [
-            'groceriesItems' => $this->groceryItemRepository->all()
+            'groceriesItems' => $groceryItemRepository->all()
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('GroceryItem.create');
     }
@@ -41,13 +35,13 @@ class GroceryItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(GroceryItemRequest $request): RedirectResponse
+    public function store(GroceryItemRequest $request, GroceryItemRepository $groceryItemRepository): RedirectResponse
     {
         $groceryItem = (new GroceryItem())
             ->setName($request->name)
             ->setEstimation((int) $request->lasting_estimate);
 
-        $this->groceryItemRepository->save($groceryItem);
+        $groceryItemRepository->save($groceryItem);
 
         return redirect(route("grocery_items.index"))
             ->with("just_happened_event_info", "The grocery item {$request->name} has just been crearted.");
@@ -56,7 +50,7 @@ class GroceryItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(GroceryItem $grocery_item)
+    public function show(GroceryItem $grocery_item): View
     {
         return view('GroceryItem.show', [
             'groceryItem' => $grocery_item
@@ -66,7 +60,7 @@ class GroceryItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(GroceryItem $grocery_item)
+    public function edit(GroceryItem $grocery_item): View
     {
         return view('GroceryItem.edit', [
             'groceryItem' => $grocery_item
@@ -111,9 +105,9 @@ class GroceryItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(GroceryItem $grocery_item)
+    public function destroy(GroceryItem $grocery_item, GroceryItemRepository $groceryItemRepository)
     {
-        $this->groceryItemRepository->remove($grocery_item);
+        $groceryItemRepository->remove($grocery_item);
         
         return redirect(route('grocery_items.index'));
     }

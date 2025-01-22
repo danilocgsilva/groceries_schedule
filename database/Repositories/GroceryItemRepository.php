@@ -6,7 +6,6 @@ namespace Database\Repositories;
 
 use App\Models\GroceryItem;
 use App\Models\EstimateLasting;
-use App\Models\ModelInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class GroceryItemRepository implements RepositoryInterface
@@ -41,7 +40,7 @@ class GroceryItemRepository implements RepositoryInterface
          * @var array<GroceryItem>
          */
         $arrayOfGroceries = [];
-        foreach (GroceryItem::all() as $item) {
+        foreach (GroceryItem::orderBy("name", "asc")->get()->all() as $item) {
             $arrayOfGroceries[] = $item;
         }
         return $arrayOfGroceries;

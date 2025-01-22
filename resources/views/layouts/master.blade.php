@@ -20,10 +20,7 @@
                 </h1>
 
                 <nav>
-                    <ul class="
-                    flex 
-                    p-4
-                    ">
+                    <ul class="flex p-4">
                         <li class="px-3">
                             <a href="{{ route('schedule') }}">
                                 Got to schedule
@@ -39,6 +36,11 @@
                                 Check Groceries
                             </a>
                         </li>
+                        <li class="px-3">
+                            <a href="{{ route('purchase.create') }}">
+                                Register a purchase
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </header>
@@ -46,7 +48,6 @@
             <main>
                 @yield('content')
             </main>
-
 
             <footer>
 
