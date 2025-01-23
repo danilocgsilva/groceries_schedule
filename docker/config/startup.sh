@@ -2,4 +2,6 @@
 
 a2enmod rewrite
 service apache2 start
-while : ; do sleep 1000; done
+cd /var/www
+chown -Rv www-data:www-data storage
+npm run dev
