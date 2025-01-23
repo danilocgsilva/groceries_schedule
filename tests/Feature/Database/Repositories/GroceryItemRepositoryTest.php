@@ -79,12 +79,14 @@ class GroceryItemRepositoryTest extends TestCase
             ->setName("Chocolate")
             ->setEstimation(8);
         $this->groceryItemRepository->save($groceryItem);
+        $this->assertCount(1, DB::table("groceries_items")->get());
 
         $groceryItem->setName("Orange");
         $this->groceryItemRepository->update($groceryItem);
 
         $modelFromDatabase = $this->groceryItemRepository->find($groceryItem->id);
         $this->assertSame("Orange", $modelFromDatabase->getName());
+        $this->assertCount(1, DB::table("groceries_items")->get());
     }
 
     public function testUpdateEstimates(): void

@@ -15,25 +15,46 @@ class PurchaseRepository implements RepositoryInterface
      */
     public function save(Model $purchase): static
     {
+        $purchase->save();
         return $this;
     }
 
-    public function find(int $id): Model;
+    public function find(int $id): Purchase
+    {
+        return Purchase::find($id);
+    }
 
     /**
      * @return array
      */
-    public function all(): array;
+    public function all(): array
+    {
+        /**
+         * @var array<\App\Models\Purchase>
+         */
+        $arrayOfPurchases = [];
+        foreach (Purchase::all() as $item) {
+            $arrayOfPurchases[] = $item;
+        }
+        return $arrayOfPurchases;
+    }
 
     /**
-     * @param Model $entry
+     * @param \App\Models\Purchase $purchase
      * @return int
      */
-    public function remove(Model $entry): bool;
+    public function remove(Model $purchase): bool
+    {
+        $purchase->delete();
+        return true;
+    }
 
     /**
-     * @param Model $entry
-     * @return int
+     * @param \App\Models\Purchase $purchase
+     * @return void
      */
-    public function update(Model $entry): void;
+    public function update(Model $purchase): void
+    {
+        $purchase->save();
+    }
 }

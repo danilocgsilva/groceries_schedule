@@ -41,6 +41,11 @@
                                 Register a purchase
                             </a>
                         </li>
+                        <li class="px-3">
+                            <a href="{{ route('purchase.index') }}">
+                                List purchases
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </header>

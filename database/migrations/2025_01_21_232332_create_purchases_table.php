@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +16,8 @@ return new class extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->biginteger("grocery_item_id")->unsigned();
-            $table->integer("place_id")->unsigned();
-            $table->integer("amount")->unsigned();
+            $table->integer("place_id")->unsigned()->nullable();
+            $table->integer("amount")->unsigned()->nullable();
             $table->timestamps();
         });
     }

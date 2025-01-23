@@ -11,7 +11,7 @@ class PurchaseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class PurchaseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "date" => "required|string",
+            "grocery_item_id" => "required|integer",
+            "expenditure" => "numeric|nullable",
+            "place" => "string|nullable",
         ];
     }
 }
