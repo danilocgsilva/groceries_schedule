@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer("place_id")->unsigned()->nullable();
             $table->integer("amount")->unsigned()->nullable();
             $table->timestamps();
+            $table->foreign("grocery_item_id")->references("id")->on("groceries_items");
         });
     }
 
