@@ -21,31 +21,26 @@
 
                 <nav>
                     <ul class="flex p-4">
-                        <li class="px-3">
-                            <a href="{{ route('schedule') }}">
-                                Got to schedule
-                            </a>
-                        </li>
-                        <li class="px-3">
-                            <a href="{{ route('grocery_items.create') }}">
-                                Create a grocery item
-                            </a>
-                        </li>
-                        <li class="px-3">
-                            <a href="{{ route('grocery_items.index') }}">
-                                Check Groceries
-                            </a>
-                        </li>
-                        <li class="px-3">
-                            <a href="{{ route('purchase.create') }}">
-                                Register a purchase
-                            </a>
-                        </li>
-                        <li class="px-3">
-                            <a href="{{ route('purchase.index') }}">
-                                List purchases
-                            </a>
-                        </li>
+                        @include('layouts.link_header', [
+                          "link_title" => "Got to schedule",
+                          "route_alias" => "schedule"
+                        ])
+                        @include('layouts.link_header', [
+                          "link_title" => "Create a grocery item",
+                          "route_alias" => "grocery_items.create"
+                        ])
+                        @include('layouts.link_header', [
+                          "link_title" => "Check Groceries",
+                          "route_alias" => "grocery_items.index"
+                        ])
+                        @include('layouts.link_header', [
+                          "link_title" => "Register a purchase",
+                          "route_alias" => "purchase.create"
+                        ])
+                        @include('layouts.link_header', [
+                          "link_title" => "List purchases",
+                          "route_alias" => "purchase.index"
+                        ])
                     </ul>
                 </nav>
             </header>
