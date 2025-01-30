@@ -4,9 +4,12 @@ namespace Tests\Feature\Controllers;
 
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class GroceryItemControllerTest extends TestCase
 {
+    use RefreshDatabase;
+    
     #[Test]
     public function redirectFromRoot(): void
     {
