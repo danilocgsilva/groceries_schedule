@@ -25,7 +25,7 @@ class PurchaseRepository implements RepositoryInterface
     }
 
     /**
-     * @return array
+     * @return array<\App\Models\Purchase>
      */
     public function all(): array
     {

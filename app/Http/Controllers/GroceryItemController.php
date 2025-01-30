@@ -13,7 +13,6 @@ use Illuminate\Contracts\View\View;
 
 class GroceryItemController extends Controller
 {
-    
     /**
      * Display a listing of the groceries.
      */

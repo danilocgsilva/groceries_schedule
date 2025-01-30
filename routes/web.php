@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\PlaceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroceryItemController;
 use App\Http\Controllers\FirstCountDateController;
@@ -14,6 +15,7 @@ Route::get('/', function (): RedirectResponse {
 
 Route::resource("grocery_items", GroceryItemController::class);
 Route::resource("purchase", PurchaseController::class);
+Route::resource("place", PlaceController::class);
 Route::get("grocery_items/{grocery_item}/delete", [GroceryItemController::class, 'delete'])
     ->name("grocery_items.delete");
 

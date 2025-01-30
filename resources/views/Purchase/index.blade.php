@@ -3,7 +3,6 @@
 @section('title', 'Schedule')
 
 @section('content')
-
     <div class="max-w-2xl mx-auto">
         <h2>List of purchases</h2>
 
@@ -20,7 +19,5 @@
                 <p>Still there's no entries registered!</p>
             </div>
         @endif
-
     </div>
-
 @endsection

@@ -41,6 +41,14 @@
                           "link_title" => "List purchases",
                           "route_alias" => "purchase.index"
                         ])
+                        @include('layouts.link_header', [
+                          "link_title" => "Place list",
+                          "route_alias" => "place.index"
+                        ])
+                        @include('layouts.link_header', [
+                          "link_title" => "Create a place",
+                          "route_alias" => "place.create"
+                        ])
                     </ul>
                 </nav>
             </header>

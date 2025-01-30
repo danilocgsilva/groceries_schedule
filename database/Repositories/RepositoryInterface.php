@@ -11,9 +11,9 @@ interface RepositoryInterface
 {
     /**
      * @param ModelInterface $entry
-     * @return void
+     * @return self
      */
-    public function save(Model $entry);
+    public function save(Model $entry): static;
 
     public function find(int $id): Model;
 

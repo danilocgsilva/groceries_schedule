@@ -10,5 +10,6 @@ Enter in the `docker` folder and run `docker compose up -d --build`.
 
 ## What does the application do?
 
-* Register aa grocery item.
+* Register a grocery item.
 * Register a purchase of the item.
+* Register a place, where purchase happened.
