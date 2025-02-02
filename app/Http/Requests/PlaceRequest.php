@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PurchaseRequest extends FormRequest
+class PlaceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +22,7 @@ class PurchaseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "date" => "required|string",
-            "grocery_item_id" => "required|integer",
-            "amount" => "numeric|nullable",
-            "place_id" => "string|nullable",
+            "name" => "required|string"
         ];
     }
 }

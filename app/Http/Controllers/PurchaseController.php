@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Database\Repositories\PlaceRepository;
 use Database\Repositories\PurchaseRepository;
 use Illuminate\Contracts\View\View;
 use App\Http\Requests\PurchaseRequest;
@@ -27,10 +28,14 @@ class PurchaseController extends Controller
      * @param PurchaseRepository $purchaseRepository
      * @return void
      */
-    public function create(GroceryItemRepository $groceryItemRepository): View
+    public function create(
+        GroceryItemRepository $groceryItemRepository,
+        PlaceRepository $placeRepository,
+    ): View
     {
         return view('Purchase.create', [
-            'groceriesItems' => $groceryItemRepository->all()
+            'groceriesItems' => $groceryItemRepository->all(),
+            'places' => $placeRepository->all()
         ]);
     }
 

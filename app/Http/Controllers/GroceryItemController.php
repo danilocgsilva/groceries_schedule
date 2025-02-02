@@ -34,7 +34,10 @@ class GroceryItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(GroceryItemRequest $request, GroceryItemRepository $groceryItemRepository): RedirectResponse
+    public function store(
+        GroceryItemRequest $request, 
+        GroceryItemRepository $groceryItemRepository
+    ): RedirectResponse
     {
         $groceryItem = (new GroceryItem())
             ->setName($request->name)
@@ -43,7 +46,7 @@ class GroceryItemController extends Controller
         $groceryItemRepository->save($groceryItem);
 
         return redirect(route("grocery_items.index"))
-            ->with("just_happened_event_info", "The grocery item {$request->name} has just been crearted.");
+            ->with("just_happened_event_info", "The grocery item {$request->name} has just been created.");
     }
 
     /**

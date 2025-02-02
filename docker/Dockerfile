@@ -11,6 +11,7 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
 COPY config/xdebug.ini /etc/php/8.2/mods-available/
 COPY config/startup.sh /startup.sh
+COPY config/fix-env-first.sh /fix-env-first.sh
 COPY config/000-default.conf /etc/apache2/sites-available/
 COPY config/apache2.conf /etc/apache2/
 RUN chmod +x /startup.sh

@@ -4,7 +4,6 @@
 
 @section('content')
 
-
 <div class="max-w-2xl mx-auto">
     <h2>Create a grocery item</h2>
 
@@ -24,6 +23,5 @@
         <input type="submit" value="Create" class="@form_submit_classes" />
     </form>
 </div>
-
 
 @endsection

@@ -4,13 +4,13 @@
 
 @section('content')
     <div class="max-w-2xl mx-auto">
-        <h2>List of purchases</h2>
+        <h2>List of purchases itens</h2>
 
         @if (count($purchasesHistory))
             <div class="list_with_entries">
                 <ul class="list-inside">
                     @foreach ($purchasesHistory as $purchase)
-                        <li>{{ $purchase->id }}</li>
+                        <li>{{ $purchase->id }}, purchase done on <strong>{{ $purchase->place->name }}</strong>, expended {{ $purchase->amount }}</li>
                     @endforeach
                 </ul>
             </div>

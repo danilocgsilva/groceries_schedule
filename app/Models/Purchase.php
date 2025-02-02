@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Place;
 
 class Purchase extends Model
 {
@@ -13,4 +14,9 @@ class Purchase extends Model
         "amount",
         "place_id"
     ];
+
+    public function place()
+    {
+        return $this->belongsTo(Place::class, "place_id", "id");
+    }
 }

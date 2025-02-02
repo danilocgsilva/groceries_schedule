@@ -34,11 +34,11 @@
                           "route_alias" => "grocery_items.index"
                         ])
                         @include('layouts.link_header', [
-                          "link_title" => "Register a purchase",
+                          "link_title" => "Register a purchase item",
                           "route_alias" => "purchase.create"
                         ])
                         @include('layouts.link_header', [
-                          "link_title" => "List purchases",
+                          "link_title" => "List purchases itens",
                           "route_alias" => "purchase.index"
                         ])
                         @include('layouts.link_header', [

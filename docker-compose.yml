@@ -1,11 +1,10 @@
 services:
   groceries_schedule:
     build:
-      context: .
+      context: docker
     container_name: groceries_schedule
     volumes:
-      - './../:/var/www'
-      - './.ssh/:/root/.ssh'
+      - './:/var/www'
       - '/var/www/docker'
     ports:
       - '1537:80'

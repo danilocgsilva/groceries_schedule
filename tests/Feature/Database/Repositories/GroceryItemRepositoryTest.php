@@ -27,9 +27,6 @@ class GroceryItemRepositoryTest extends TestCase
         $this->groceryItemRepository = new GroceryItemRepository();
     }
 
-    /**
-     * A basic feature test example.
-     */
     public function testSave(): void
     {
         $this->assertCount(0, DB::table("groceries_items")->get());
