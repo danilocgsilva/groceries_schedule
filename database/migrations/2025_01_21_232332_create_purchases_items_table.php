@@ -8,12 +8,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+    const TABLE_NAME = "purchases_items";
+    
     public function up(): void
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create(self::TABLE_NAME, function (Blueprint $table) {
             $table->id();
             $table->biginteger("grocery_item_id")->unsigned();
             $table->integer("place_id")->unsigned()->nullable();
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists(self::TABLE_NAME);
     }
 };

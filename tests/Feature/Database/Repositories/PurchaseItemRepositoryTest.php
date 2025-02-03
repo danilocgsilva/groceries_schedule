@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-use Database\Repositories\PurchaseRepository;
+use Database\Repositories\PurchaseItemRepository;
 use Tests\TestCase;
-use App\Models\Purchase;
+use App\Models\PurchaseItem;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use PDOException;
 
-class PurchaseRepositoryTest extends TestCase
+class PurchaseItemRepositoryTest extends TestCase
 {
     use DatabaseMigrations;
 
-    private PurchaseRepository $purchaseRepository;
+    private PurchaseItemRepository $purchaseRepository;
 
     public function setUp(): void
     {
         parent::setUp();
-        $this->purchaseRepository = new PurchaseRepository();
+        $this->purchaseRepository = new PurchaseItemRepository();
     }
     
     public function testSaveMissingRelation()
     {
         $this->expectException(PDOException::class);
         $this->assertCount(0, DB::table("purchases")->get());
-        $purchase = Purchase::make([
+        $purchase = PurchaseItem::make([
             "grocery_item_id" => 1,
             "amount" => 4,
             "place_id" => 5

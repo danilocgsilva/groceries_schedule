@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Place;
 
-class Purchase extends Model
+class PurchaseItem extends Model
 {
-    protected $table = "purchases";
+    protected $table = "purchases_items";
 
     protected $fillable = [
         "grocery_item_id",

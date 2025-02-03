@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Database\Repositories\PlaceRepository;
-use Database\Repositories\PurchaseRepository;
+use Database\Repositories\PurchaseItemRepository;
 use Illuminate\Contracts\View\View;
 use App\Http\Requests\PurchaseRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Database\Repositories\GroceryItemRepository;
 use App\Models\Purchase;
 
-class PurchaseController extends Controller
+class PurchaseItemController extends Controller
 {
     /**
      * Display a listing of the groceries.
      */
-    public function index(PurchaseRepository $purchaseRepository): View
+    public function index(PurchaseItemRepository $purchaseRepository): View
     {
         return view('Purchase.index', [
             'purchasesHistory' => $purchaseRepository->all()
@@ -25,7 +25,7 @@ class PurchaseController extends Controller
     }
 
     /**
-     * @param PurchaseRepository $purchaseRepository
+     * @param PurchaseItemRepository $purchaseRepository
      * @return void
      */
     public function create(
@@ -41,7 +41,7 @@ class PurchaseController extends Controller
 
     public function store(
         PurchaseRequest $purchaseRequest, 
-        PurchaseRepository $purchaseRepository
+        PurchaseItemRepository $purchaseRepository
     ): RedirectResponse
     {
         $newPurchase = Purchase::make($purchaseRequest->toArray());

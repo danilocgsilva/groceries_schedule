@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroceryItemController;
 use App\Http\Controllers\FirstCountDateController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PurchaseItemController;
 
 Route::get('/', function (): RedirectResponse {
     return redirect(route('schedule'));
 });
 
 Route::resource("grocery_items", GroceryItemController::class);
-Route::resource("purchase", PurchaseController::class);
+Route::resource("purchase", PurchaseItemController::class);
 Route::resource("place", PlaceController::class);
 Route::get("grocery_items/{grocery_item}/delete", [GroceryItemController::class, 'delete'])
     ->name("grocery_items.delete");
