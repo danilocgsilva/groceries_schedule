@@ -7,7 +7,7 @@
     <div class="max-w-2xl mx-auto">
         <h2>Register a purchase</h2>
 
-        <form action="{{ route('purchase.store') }}" method="POST">
+        <form action="{{ route('purchase_items.store') }}" method="POST">
             <div class="mb-5">
                 <label for="date" class="block mb-2 font-medium px-1">Date</label>
                 <input id="date" name="date" type="date" placeholder="date"

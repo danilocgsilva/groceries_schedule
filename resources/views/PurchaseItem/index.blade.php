@@ -10,7 +10,10 @@
             <div class="list_with_entries">
                 <ul class="list-inside">
                     @foreach ($purchasesHistory as $purchase)
-                        <li>{{ $purchase->id }}, purchase done on <strong>{{ $purchase->place->name }}</strong>, expended {{ $purchase->amount }}</li>
+                        <li>
+                            {{ $purchase->id }}, purchase done on <strong>{{ $purchase->place->name }}</strong>, expended {{ $purchase->amount }}, at <strong>{{ $purchase->created_at }}</strong><br />
+                            Next purchase: <strong>Next</strong>
+                        </li>
                     @endforeach
                 </ul>
             </div>

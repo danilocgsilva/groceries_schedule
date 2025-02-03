@@ -10,7 +10,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Requests\PurchaseRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Database\Repositories\GroceryItemRepository;
-use App\Models\Purchase;
+use App\Models\PurchaseItem;
 
 class PurchaseItemController extends Controller
 {
@@ -19,7 +19,7 @@ class PurchaseItemController extends Controller
      */
     public function index(PurchaseItemRepository $purchaseRepository): View
     {
-        return view('Purchase.index', [
+        return view('PurchaseItem.index', [
             'purchasesHistory' => $purchaseRepository->all()
         ]);
     }
@@ -33,7 +33,7 @@ class PurchaseItemController extends Controller
         PlaceRepository $placeRepository,
     ): View
     {
-        return view('Purchase.create', [
+        return view('PurchaseItem.create', [
             'groceriesItems' => $groceryItemRepository->all(),
             'places' => $placeRepository->all()
         ]);
@@ -44,10 +44,10 @@ class PurchaseItemController extends Controller
         PurchaseItemRepository $purchaseRepository
     ): RedirectResponse
     {
-        $newPurchase = Purchase::make($purchaseRequest->toArray());
+        $newPurchase = PurchaseItem::make($purchaseRequest->toArray());
         $purchaseRepository->save($newPurchase);
         
-        return redirect(route("purchase.index"))
+        return redirect(route("purchase_items.index"))
             ->with("just_happened_event_info", "Purchase has just been created.");
     }
 

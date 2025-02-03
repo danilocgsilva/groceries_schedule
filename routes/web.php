@@ -14,7 +14,7 @@ Route::get('/', function (): RedirectResponse {
 });
 
 Route::resource("grocery_items", GroceryItemController::class);
-Route::resource("purchase", PurchaseItemController::class);
+Route::resource("purchase_items", PurchaseItemController::class);
 Route::resource("place", PlaceController::class);
 Route::get("grocery_items/{grocery_item}/delete", [GroceryItemController::class, 'delete'])
     ->name("grocery_items.delete");

@@ -35,11 +35,11 @@
                         ])
                         @include('layouts.link_header', [
                           "link_title" => "Register a purchase item",
-                          "route_alias" => "purchase.create"
+                          "route_alias" => "purchase_items.create"
                         ])
                         @include('layouts.link_header', [
                           "link_title" => "List purchases itens",
-                          "route_alias" => "purchase.index"
+                          "route_alias" => "purchase_items.index"
                         ])
                         @include('layouts.link_header', [
                           "link_title" => "Place list",
