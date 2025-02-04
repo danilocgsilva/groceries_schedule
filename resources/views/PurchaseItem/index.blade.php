@@ -11,8 +11,8 @@
                 <ul class="list-inside">
                     @foreach ($purchasesHistory as $purchase)
                         <li>
-                            {{ $purchase->id }}, purchase done on <strong>{{ $purchase->place->name }}</strong>, expended {{ $purchase->amount }}, at <strong>{{ $purchase->created_at }}</strong><br />
-                            Next purchase: <strong>Next</strong>
+                            <strong>{{ $purchase->grocery_item->name }}</strong> purchase done on <strong>{{ $purchase->place->name }}</strong>, expended {{ $purchase->amount }}, at <strong>{{ $purchase->created_at_custom_blade_string }}</strong><br />
+                            Next purchase: <strong>{{ $purchase->next_purchase_string }}</strong>
                         </li>
                     @endforeach
                 </ul>

@@ -31,7 +31,7 @@
                     @foreach ($groceriesItems as $groceryItem)
                         <li>
                             <a href="{{ route('grocery_items.show', ['grocery_item' => $groceryItem->id]) }}">
-                                {{ $groceryItem->name }}
+                                {{ $groceryItem->name }}, usually lasts for <strong>{{ $groceryItem->getEstimation() }}</strong> days
                             </a>
                         </li>
                     @endforeach
