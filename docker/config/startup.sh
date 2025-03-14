@@ -2,4 +2,8 @@
 
 a2enmod rewrite
 service apache2 start
-/usr/bin/composer -d /var/www dev
+composer install
+npm install
+composer dev
+
+while : ; do sleep 1000; done
